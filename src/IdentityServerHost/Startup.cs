@@ -34,7 +34,8 @@ namespace IdentityServerHost
             services.AddIdentityServer()
                 .AddTemporarySigningCredential()       //creates/uses temporary key to sign tokens
                 .AddInMemoryClients(ClientService.GetClients())
-                .AddInMemoryIdentityResources(ResourceService.GetResources())
+                .AddInMemoryIdentityResources(ResourceService.GetIdentityResources())
+                .AddInMemoryApiResources(ResourceService.GetApiResources())
                 .AddInMemoryUsers(UserService.GetUsers().ToList());
 
             services.AddMvc();

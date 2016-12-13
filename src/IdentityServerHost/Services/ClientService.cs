@@ -12,6 +12,8 @@ namespace IdentityServerHost.Services
         public static IEnumerable<IdentityServer4.Models.Client> GetClients()
         {
             List<IdentityServer4.Models.Client> clients = new List<IdentityServer4.Models.Client>();
+
+            //webapp client - the that will authenticate users
             clients.Add(new IdentityServer4.Models.Client
             {
                 ClientId = "webapp",
@@ -22,6 +24,20 @@ namespace IdentityServerHost.Services
                 RedirectUris = { "http://localhost:62021/signin-oidc" },
                 PostLogoutRedirectUris = { "http://localhost:62021" },
             });
+
+            //webapi client - this is the client that can access the api
+            clients.Add(new Client
+            {
+                ClientId = "webapi",
+                ClientName = "Web API",
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                ClientSecrets = {
+                    new Secret("secret".Sha256())
+                },
+                AllowedScopes = { "foo" },
+                RequireClientSecret = true
+            });
+
             return clients;
         }
     }

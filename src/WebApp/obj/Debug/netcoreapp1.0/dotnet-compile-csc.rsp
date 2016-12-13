@@ -7,8 +7,8 @@
 -debug:full
 -nostdlib
 -nologo
-"C:\projects\demo\IdentityDemo\src\WebApp\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"C:\projects\demo\IdentityDemo\src\WebApp\bin\Debug\netcoreapp1.0\WebApp.dll"
+"C:\projects\IdentityServer4.Demo\src\WebApp\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"C:\projects\IdentityServer4.Demo\src\WebApp\bin\Debug\netcoreapp1.0\WebApp.dll"
 -r:"C:\Users\Matt\.nuget\packages\Microsoft.ApplicationInsights\2.1.0\lib\dotnet5.4\Microsoft.ApplicationInsights.dll"
 -r:"C:\Users\Matt\.nuget\packages\Microsoft.ApplicationInsights.AspNetCore\1.0.0\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll"
 -r:"C:\Users\Matt\.nuget\packages\Microsoft.AspNetCore.Antiforgery\1.0.1\lib\netstandard1.3\Microsoft.AspNetCore.Antiforgery.dll"
@@ -203,8 +203,8 @@
 -r:"C:\Users\Matt\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\Matt\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\Matt\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
--resource:"C:\projects\demo\IdentityDemo\src\WebApp\obj\Debug\netcoreapp1.0\WebAppdotnet-compile.deps.json",WebApp.deps.json
-"C:\projects\demo\IdentityDemo\src\WebApp\Program.cs"
-"C:\projects\demo\IdentityDemo\src\WebApp\Startup.cs"
-"C:\projects\demo\IdentityDemo\src\WebApp\Controllers\HomeController.cs"
-"C:\projects\demo\IdentityDemo\src\WebApp\Controllers\Profile.cs"
+-resource:"C:\projects\IdentityServer4.Demo\src\WebApp\obj\Debug\netcoreapp1.0\WebAppdotnet-compile.deps.json",WebApp.deps.json
+"C:\projects\IdentityServer4.Demo\src\WebApp\Program.cs"
+"C:\projects\IdentityServer4.Demo\src\WebApp\Startup.cs"
+"C:\projects\IdentityServer4.Demo\src\WebApp\Controllers\HomeController.cs"
+"C:\projects\IdentityServer4.Demo\src\WebApp\Controllers\Profile.cs"
