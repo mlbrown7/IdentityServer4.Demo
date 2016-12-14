@@ -35,7 +35,9 @@ namespace IdentityServerHost.Services
                     {
                         new Claim(IdentityModel.JwtClaimTypes.GivenName, "jane"),
                         new Claim(IdentityModel.JwtClaimTypes.FamilyName, "doe"),
-                        new Claim(IdentityModel.JwtClaimTypes.Email, "jane@demo.com")
+                        new Claim(IdentityModel.JwtClaimTypes.Email, "jane@demo.com"),
+                        new Claim(IdentityModel.JwtClaimTypes.Role, "sysadmin"),
+                        new Claim(IdentityModel.JwtClaimTypes.Role, "itadmin")
                     }
                 }
             };

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
+    //[Authorize(Roles = "sysadmin")]
     [Authorize]
     public class Profile : Controller
     {

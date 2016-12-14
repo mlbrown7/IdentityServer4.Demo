@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using System.Security.Claims;
 
 namespace WebApp
 {
@@ -63,20 +66,39 @@ namespace WebApp
             });
 
             //this keeps Microsoft.Identity from re-formatting claims and adding namespaces which make it hard to use
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             //use openid authentication
             //default scope asked for is profile
             app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
             {
                 AuthenticationScheme = "oidc",
-                SignInScheme = "cookies",
+                SignInScheme = "cookies",       //middleware componebnt that will sign-in the user
                 Authority = "http://localhost:12345",    //url to identity server
                 RequireHttpsMetadata = false,
                 ClientId = "webapp",
                 SaveTokens = true,
                 ResponseType = "id_token",
-                Scope = { "openid profile email" }
+                Scope = { "openid profile email roles" },
+                TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "name",
+                    RoleClaimType = "role"
+                },
+                Events = new OpenIdConnectEvents
+                {
+                    OnTicketReceived = context =>
+                    {
+                        if (context.Ticket.Principal.Identity.IsAuthenticated)
+                        {
+                            //load application specific claims to use, like application specific roles
+                            ClaimsIdentity identity = (ClaimsIdentity)context.Ticket.Principal.Identity;
+                            identity.AddClaim(new Claim("spam_me", "false"));
+                            identity.AddClaim(new Claim("role", "appuser"));
+                        }
+                        return Task.CompletedTask;
+                    }
+                }
             });
         }
 

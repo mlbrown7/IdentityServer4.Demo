@@ -15,7 +15,8 @@ namespace IdentityServerHost.Services
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email()
+                new IdentityResources.Email(),
+                new IdentityResource("roles", new List<string> { "role" })
             };
         }
 

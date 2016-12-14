@@ -20,7 +20,7 @@ namespace IdentityServerHost.Services
                 ClientName = "Demo WebApp",
                 AllowedGrantTypes = GrantTypes.Implicit,
                 ClientSecrets = { new Secret("password".Sha256())  },
-                AllowedScopes = new List<string> { IdentityServer4.IdentityServerConstants.StandardScopes.OpenId, IdentityServer4.IdentityServerConstants.StandardScopes.Profile, IdentityServer4.IdentityServerConstants.StandardScopes.Email },
+                AllowedScopes = new List<string> { IdentityServer4.IdentityServerConstants.StandardScopes.OpenId, IdentityServer4.IdentityServerConstants.StandardScopes.Profile, IdentityServer4.IdentityServerConstants.StandardScopes.Email, "roles" },
                 RedirectUris = { "http://localhost:62021/signin-oidc" },
                 PostLogoutRedirectUris = { "http://localhost:62021" },
             });
@@ -30,6 +30,18 @@ namespace IdentityServerHost.Services
             {
                 ClientId = "webapi",
                 ClientName = "Web API",
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                ClientSecrets = {
+                    new Secret("secret".Sha256())
+                },
+                AllowedScopes = { "foo" },
+                RequireClientSecret = true
+            });
+
+            clients.Add(new Client
+            {
+                ClientId = "apiuser",
+                ClientName = "Web API User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {
                     new Secret("secret".Sha256())
